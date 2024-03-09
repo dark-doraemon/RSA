@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Chu_Ky_So_RSA.props" />
+</Project>

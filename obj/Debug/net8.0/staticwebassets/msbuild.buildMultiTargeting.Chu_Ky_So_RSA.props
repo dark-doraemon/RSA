@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Chu_Ky_So_RSA.props" />
+</Project>

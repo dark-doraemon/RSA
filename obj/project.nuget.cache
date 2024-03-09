@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ozbPuO+51kasRdhkIas2f1IsMuIGJE7mPG82F27rWnamOZmd8mNEg9KUhXWbCufUvIg+u30HoewQamHDVRtxdQ==",
+  "success": true,
+  "projectFilePath": "D:\\Code\\LinhTinh\\Chu_Ky_So_RSA\\Chu_Ky_So_RSA.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tuand\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

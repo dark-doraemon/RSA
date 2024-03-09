@@ -1,0 +1,119 @@
+﻿@model Ingredients
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <form asp-action="index2" method="post">
+                    <div class="col-6">
+                        <div>
+                            p
+                            <input class="form-control " asp-for="p" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            q
+                            <input class="form-control" asp-for="q" />
+                        </div>
+                    </div>
+
+                    <div class="col-6 mt-5">
+                        <button type="submit" class="me-5 btn btn-primary">Xác nhận</button>
+                        <a class="btn btn-primary">Sô ngẫu nhiên</a>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="row">
+                <div>
+                    N :
+                    <input value="@Model.n" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div>
+                    &Phi;(N) :
+                    <input value="@Model.phiN" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <div>Các số e</div>
+                    @{
+                        if (Model.strE != String.Empty)
+                        {
+                            <div>
+                                @Model.strE
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div>
+                    e :
+                    <form method="post" asp-action="setE">
+                        <input value="@Model.e" asp-for="e" />
+                        <button type="submit">Xác nhận</button>
+                    </form>
+                </div>
+                <div />
+
+                <div class="row">
+                    <div>
+                        d :
+                        <input value="@Model.d" type="password" id="secretKey" />
+                        <input type="checkbox" onclick="myFunction()">Show Key
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <form method="post" asp-action="Encry">
+            <div class="row">
+                <label>Nhập thông tin gốc</label>
+                <textarea id="w3review" rows="4" cols="50" asp-for="plainNumber"></textarea>
+
+                <button type="submit" class="btn btn-primary">
+                    Xác nhận
+                </button>
+            </div>
+
+        </form>
+        <div class="row">
+            <label>Thông tin đã mã hóa</label>
+            <textarea  rows="4" cols="50" asp-for="cipherNumber"></textarea>
+        </div>
+
+        <div class="row">
+            <form method="post" asp-action="DeEncry">
+                <label>Nhập sercet key</label>
+                <input class="form-control" name="sercretKey"  />
+                
+                <button type="submit">Xác nhận</button>
+            </form>
+        </div>
+
+        <div class="row mt-5">
+            <div>Thông tin ban đầu</div>
+            <textarea rows="4" cols="50">
+                @ViewBag.result 
+            </textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("secretKey");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
