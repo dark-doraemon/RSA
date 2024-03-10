@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Chu_Ky_So_RSA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f807c790f3a17bb982b8b96f4d2111345a24cca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc0394ed5c3652283de8f084416ba3e7e032285a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Chu_Ky_So_RSA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Chu_Ky_So_RSA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
