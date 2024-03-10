@@ -24,7 +24,6 @@
 
         public string cipherText { get; set; }
 
-        public long plainNumber { get; set; }
-        public long cipherNumber { get; set; }  
+        public string hashText { get; set; }
     }
 }

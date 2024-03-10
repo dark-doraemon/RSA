@@ -31,3 +31,4 @@ D:\Code\LinhTinh\Chu_Ky_So_RSA\obj\Debug\net8.0\ref\Chu_Ky_So_RSA.dll
 D:\Code\LinhTinh\Chu_Ky_So_RSA\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Code\LinhTinh\Chu_Ky_So_RSA\obj\Debug\net8.0\Chu_Ky_So_RSA.csproj.AssemblyReference.cache
 D:\Code\LinhTinh\Chu_Ky_So_RSA\obj\Debug\net8.0\Chu_Ky_So_RSA.csproj.CopyComplete
+D:\Code\LinhTinh\Chu_Ky_So_RSA\obj\Debug\net8.0\Chu_Ky_So_RSA.sourcelink.json

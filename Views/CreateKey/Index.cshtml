@@ -19,43 +19,45 @@
 
                     <div class="col-6 mt-5">
                         <button type="submit" class="me-5 btn btn-primary">Xác nhận</button>
-                        <a class="btn btn-primary">Sô ngẫu nhiên</a>
+                        @* <a class="btn btn-primary">Sô ngẫu nhiên</a> *@
                     </div>
                 </form>
 
             </div>
 
-            <div class="row">
+            <div class="row mt-1">
                 <div>
                     N :
                     <input value="@Model.n" />
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row mt-1">
                 <div>
                     &Phi;(N) :
                     <input value="@Model.phiN" />
                 </div>
             </div>
 
-            <div class="row">
-                <div>
-                    <div>Các số e</div>
+            <div class="row mt-1">
+                <div id="allprivatekey" style="display:none">
+                    <div>Tất cả các private key</div>
                     @{
                         if (Model.strE != String.Empty)
                         {
-                            <div>
-                                @Model.strE
+                            <div class="col-12">
+                                <textarea>@Model.strE</textarea>
                             </div>
                         }
                     }
                 </div>
 
                 <div>
-                    e :
+                    <h4>Private key</h4>
                     <form method="post" asp-action="setE">
-                        <input value="@Model.e" asp-for="e" />
+                        <input value="@Model.e" asp-for="e" type="password" id="secretKey" /><br />
+                        <input type="checkbox" onclick="myFunction()">Show Key<br />
+                        <input type="checkbox" onclick="showAllPrivateKey()">Show all private key <br />
                         <button type="submit">Xác nhận</button>
                     </form>
                 </div>
@@ -63,9 +65,8 @@
 
                 <div class="row">
                     <div>
-                        d :
-                        <input value="@Model.d" type="password" id="secretKey" />
-                        <input type="checkbox" onclick="myFunction()">Show Key
+                        <h4>Public key</h4>
+                        <input value="@Model.d" />
                     </div>
                 </div>
             </div>
@@ -73,37 +74,70 @@
     </div>
 
     <div class="col-6">
-        <form method="post" asp-action="Encry">
+        <form method="post" asp-action="Hash">
             <div class="row">
                 <label>Nhập thông tin gốc</label>
-                <textarea id="w3review" rows="4" cols="50" asp-for="plainNumber"></textarea>
+                <textarea rows="4" cols="50" asp-for="plainText"></textarea>
 
                 <button type="submit" class="btn btn-primary">
-                    Xác nhận
+                    Hash
                 </button>
             </div>
 
         </form>
+
         <div class="row">
-            <label>Thông tin đã mã hóa</label>
-            <textarea  rows="4" cols="50" asp-for="cipherNumber"></textarea>
+            <label>Thông tin đã hash</label>
+            <textarea rows="2" cols="50" asp-for="hashText"></textarea>
+
         </div>
 
         <div class="row">
-            <form method="post" asp-action="DeEncry">
-                <label>Nhập sercet key</label>
-                <input class="form-control" name="sercretKey"  />
-                
-                <button type="submit">Xác nhận</button>
+            <form method="post" class="form-group" asp-action="Encrypt">
+                <label class="form-label">Nhập private key</label>
+                <input class="form-control" name="privateKey" />
+
+                <button type="submit" class="btn btn-primary mt-3">Mã hóa</button>
+            </form>
+        </div>
+        <div class="row">
+            <label>Thông tin hash đã mã hóa (chữ ký số)</label>
+            <textarea rows="4" cols="50" asp-for="cipherText"></textarea>
+        </div>
+
+        <h1>Kiểm tra thông tin</h1>
+        <div class="row">
+            <form class="form-group" method="post" asp-action="Decrypt">
+                @* <label class="form-label">Thông tin gốc</label>
+                <input class="form-control" name="plainText"/>
+                *@
+                <label class="form-label">Chữ ký số</label>
+                <input class="form-control" name="signature" />
+
+                <label class="form-label">Public key</label>
+                <input class="form-control" name="publicKey" />
+
+                <button type="submit" class="btn btn-primary">Giải mã</button>
             </form>
         </div>
 
-        <div class="row mt-5">
-            <div>Thông tin ban đầu</div>
-            <textarea rows="4" cols="50">
-                @ViewBag.result 
-            </textarea>
+        <div class="row mt-1">
+            <div>Thông tin khi giải mã</div>
+            <textarea rows="2" cols="50">@TempData["result"]</textarea>
         </div>
+
+        <div class="row mt-1">
+            <form method="post" asp-action="CheckFinalResult">
+                <label class="form-label">Mã hash 1</label>
+                <input class="form-control hash1" name="hash1" />
+
+                <label class="form-label">Mã hash 2</label>
+                <input class="form-control hash2" name="hash2" />
+
+                <button class="xacNhanChuKy" type="submit">So sánh</button>
+            </form>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
     </div>
 </div>
 
@@ -116,4 +150,16 @@
             x.type = "password";
         }
     }
+
+    function showAllPrivateKey() {
+        var privateKeyDiv = document.getElementById("allprivatekey");
+
+        if (privateKeyDiv.style.display === 'none' || privateKeyDiv.style.display === '') {
+            privateKeyDiv.style.display = 'block';
+        } else {
+            privateKeyDiv.style.display = 'none';
+        }
+    }
+
+
 </script>
